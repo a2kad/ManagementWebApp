@@ -42,4 +42,5 @@ Elle/il disposera d’un compte spécial avec une adresse mail et un mot de pass
 - **Annuler les notes de frais**, avec uniquement les motifs suivants :
   + Non prise en charge
   + Justificatif manquant
+
 **ATTENTION, lors d’une annulation, il faudra donner des indications à l’annulation : ex. manque le ticket de caisse, pas de prise en charge du repas dans un 5 étoiles.**
