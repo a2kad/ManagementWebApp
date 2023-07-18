@@ -1,4 +1,5 @@
 # ManagementWebApp
+![example workflow](https://github.com/a2kad/ManagementWebApp/actions/workflows/index.php/badge.svg)
 ## Projet : Gestion de note de frais
 Pour les besoins d’une petite entreprise, vous allez développer une WebApp
 permettant de saisir des notes de frais.
