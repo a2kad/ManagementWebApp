@@ -1,4 +1,4 @@
-# ManagementWebApp
+# ManagementWebApp (ERP)
 
 ## Projet : Gestion de note de frais
 Pour les besoins d’une petite entreprise, vous allez développer une WebApp
@@ -32,8 +32,8 @@ Avant de pouvoir rentrer ses notes de frais, l’employé devra au préalable **
 L’employé devra se connecter à l’aide de son adresse mail et accédera à son espace employé. Il disposera des fonctionnalités suivantes :
 ### La gestion de ses notes de frais :
 - Il pourra voir l’avancement de celles-ci : prise en charge Oui / Non, Annulée …
-- Il pourra supprimer ses notes de frais ( Attention, une fois prise en charge pas de possibilité de supprimer la note )
-- Il pourra modifier ses notes de frais ( Attention, une fois prise en charge pas de possibilité de modifier la note )
+- Il pourra supprimer ses notes de frais (Attention, une fois prise en charge pas de possibilité de supprimer la note)
+- Il pourra modifier ses notes de frais (Attention, une fois prise en charge pas de possibilité de modifier la note)
 ### La création d’une note de frais :
 - Avec les renseignements cités ci-dessus
 ## La/le gestionnaire de paie.
