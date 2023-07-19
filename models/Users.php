@@ -26,10 +26,9 @@ class Users
             return false;
         }
     }
-
+    
     public static function checkPassword(string $login, string $password): bool
     {
-
         try {
             $pdo = Database::createInstancePDO();
             $sql = "SELECT * FROM `users` WHERE `email` = :email";

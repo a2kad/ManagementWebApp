@@ -5,6 +5,7 @@ require_once "../helpers/Database.php";
 require_once "../helpers/Form.php";
 require_once "../models/Users.php";
 
+$regexString = '/^[a-zA-Z]+$/';
 $message = [];
 $errors = [];
 $showButtons = true;
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-
+    
     
     if (Users::checkLogin($email)) {
         

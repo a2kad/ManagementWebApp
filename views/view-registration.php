@@ -23,8 +23,12 @@
                         <label for="floatingInput">Adresse e-mail</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control shadow" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control shadow" name="password" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Mot de passe</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control shadow" name="confirmpassword" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Confirmez le mot de passe</label>
                     </div>
                     <button class="btn btn-warning w-100 py-3 mb-3 shadow" type="submit">S'inscrire</button>
                 </form>
