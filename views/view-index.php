@@ -17,6 +17,7 @@
                         <div class="form-text error"><?= $error['password'] ?? '' ?></div>
                     </div>
                     <button class="btn btn-warning w-100 py-2 my-2 shadow" type="submit">S'identifier</button>
+                    <div class="form-text error"><?= $error['bdd'] ?? '' ?></div>
                     <p class="mt-5 mb-3 text-body-secondary">Si vous n'avez pas de compte, veuillez vous <a href="../controllers/controller-registration.php">inscrire</a></p>
                 </form>
             </div>

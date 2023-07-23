@@ -37,6 +37,7 @@
                         <div class="form-text error"><?=  $error['conformation']?? '' ?></div>
                     </div>
                     <button class="btn btn-warning w-100 py-3 mb-3 shadow" type="submit">S'inscrire</button>
+                    <div class="form-text error"><?= $error['bdd'] ?? '' ?></div>
                 </form>
             </div>
         </div>
