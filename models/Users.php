@@ -63,4 +63,23 @@ class Users
             return false;
         }
     }
+    public static function createUser(array $inputs) :bool
+    {
+        try{
+            $pdo = Database::createInstancePDO();
+            $sql = "INSERT INTO `users` (`name`, `lastname`, `email`, `tel`, `password`, `id_type_user`) VALUES (:name, :lastname, :email, :tel, :password, '1');";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':name', Form::safeData($inputs['name']), PDO::PARAM_STR);
+            $stmt->bindValue(':lastname', Form::safeData($inputs['lastname']), PDO::PARAM_STR);
+            $stmt->bindValue(':tel', Form::safeData($inputs['tel']),PDO::PARAM_STR);
+            $stmt->bindValue(':email', Form::safeData($inputs['email']),PDO::PARAM_STR);
+            $stmt->bindValue(':password', password_hash(Form::safeData($inputs['password']), PASSWORD_DEFAULT),PDO::PARAM_STR);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            // test unitaire pour vérifier que l'animal n'a pas été ajouté et connaitre la raison
+            echo 'Erreur : ' . $e->getMessage();
+            return false;
+        }
+    }
 }
