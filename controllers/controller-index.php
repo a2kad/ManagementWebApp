@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $showButtons = false;
                 $message['email'] = 'Connected';
                 $_SESSION['user'] = Users::getUser($email);
-                header('Location: ../controllers/controller-admin.php');
+                header('Location: ../controllers/controller-gerer.php');
                 exit;
             } else {
                 $error['password'] = 'Mauvais mot de passe';
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error['email'] = 'Mauvais adresse e-mail';
         }
     } else {
-        $error['bdd'] = 'Une erreur est survenue lors de l\'ajout de l\'animal';
+        $error['bdd'] = 'Une erreur est survenue lors de l\'ajout de l\'utilisateur';
     }
 }
 

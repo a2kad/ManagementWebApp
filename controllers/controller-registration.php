@@ -48,6 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else if (!preg_match(REGEX_EMAIL, $_POST['email'])) {
             $error['email'] = 'Le mail n\'est pas valide';
             $error['email_red'] = 'is-invalid';
+        } else if (Users::checkLogin($_POST['email'])) {
+            $error['email'] = 'Cet e-mail est déjà utilisée';
+            $error['email_red'] = 'is-invalid';
         }
     }
 
@@ -60,15 +63,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error['password_red'] = 'is-invalid';
         }
     }
-    if ($_POST['password'] != $_POST['conformation']){
+    if ($_POST['password'] != $_POST['conformation']) {
         $error['conformation'] = 'Les mots de passe ne correspondent pas';
         $error['conformation_red'] = 'is-invalid';
     }
 
     if (empty($error)) {
         Users::createUser($_POST);
-    }else{
-        $error['bdd'] = 'Une erreur est survenue lors de l\'ajout de l\'animal';
+        header('Location: ../controllers/controller-verif.php');
+        exit;
+    } else {
+        $error['bdd'] = 'Une erreur est survenue lors de l\'ajout de l\'utilisateur';
     }
 }
 

@@ -82,4 +82,16 @@ class Users
             return false;
         }
     }
+    public static function getAllUsers(){
+        try{
+            $pdo = Database::createInstancePDO();
+            $sql = 'SELECT * FROM `users` NATURAL JOIN `type_user`';
+            $stmt = $pdo->query($sql);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+
+        }catch(PDOException $e) {
+            return false;
+        }
+    }
 }
