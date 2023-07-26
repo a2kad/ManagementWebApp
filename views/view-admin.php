@@ -38,6 +38,7 @@
 
             </tbody>
         </table>
+        <div class="text-end"><a href="../controllers/controller-gerer.php" type="button" class="btn btn-secondary">Arrière</a></div>
     </div>
 
     </div>

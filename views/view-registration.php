@@ -7,7 +7,7 @@
                 <form method="POST" action="">
                     <h1 class="h3 my-3 fw-normal">Inscription</h1>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control shadow <?=  $error['lastname_red']?? '' ?>" name="lastname" id="floatingLastName" placeholder="Doe" value="<?= $_POST['lastname'] ?? '' ?>">
+                        <input type="text" class="form-control shadow <?= $error['lastname_red']?? '' ?>" name="lastname" id="floatingLastName" placeholder="Doe" value="<?= $_POST['lastname'] ?? '' ?>">
                         <label for="floatingLastName">Nom</label>
                         <div class="form-text error"><?=  $error['lastname']?? '' ?></div>
                     </div>

@@ -20,6 +20,9 @@
                         <a href="../controllers/controller-frais.php" class="btn btn-outline-dark ms-2">Gérer Les Frais</a>
                 <?php
                     }
+                }else{
+                    header("Location: ../controllers/controller-index.php");
+                    exit;
                 } ?>
             </div>
         </div>

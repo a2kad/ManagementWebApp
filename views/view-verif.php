@@ -5,11 +5,11 @@
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col col-lg-6">
                 <div class="alert alert-success" role="alert">
-                Inscription terminée avec succès !
+                Operation terminée avec succès !
                 <br>
                 <br>
                 <a href="../index.php">Connectez-vous à votre compte</a><br><br>
-                <a href="../controllers/controller-registration.php">Enregistrer un nouvel utilisateur</a>
+                
                 </div>
             </div>
         </div>

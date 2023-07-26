@@ -52,4 +52,25 @@ class Frais
             return false;
         }
     }
+
+    public static function addFrais($date, $montant_ttc, $montant_ht, $justificatif, $id_type, $id_user ) :bool
+    {
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = "INSERT INTO `frais` (`date`, `montant_ttc`, `montant_ht`, `justificatif`, `id_type`, `id_status`, `id_user`) 
+                    VALUES (:date, :montant_ttc, :montant_ht, :justificatif, :id_type, '3', :id_user);";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':date', Form::safeData($date), PDO::PARAM_STR);
+            $stmt->bindValue(':montant_ttc', Form::safeData($montant_ttc), PDO::PARAM_STR);
+            $stmt->bindValue(':montant_ht', Form::safeData($montant_ht), PDO::PARAM_STR);
+            $stmt->bindValue(':justificatif', Form::safeData($justificatif), PDO::PARAM_STR);
+            $stmt->bindValue(':id_type', Form::safeData($id_type), PDO::PARAM_STR);
+            $stmt->bindValue(':id_user', Form::safeData($id_user), PDO::PARAM_STR);
+            
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

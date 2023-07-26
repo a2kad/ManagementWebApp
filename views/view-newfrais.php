@@ -4,50 +4,74 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col col-lg-8">
-                <form action="" method="post">
+                <h1 class="text-center mb-3">Note de frais</h1>
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="row mb-3">
-                        <label for="dateFrais" class="col-sm-2 col-form-label">Date</label>
+                        <label for="dateFrais" class="col-sm-2 col-form-label">Date *</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" id="dateFrais" value="<?= date("Y-m-d") ?>">
+                            <input type="date" name="date" class="form-control shadow <?= $error['date_red'] ?? '' ?>" id="dateFrais" value="<?= date("Y-m-d") ?>">
+                            <div class="form-text error"><?= $error['date'] ?? '' ?></div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="motif" class="col-sm-2 col-form-label">Motif</label>
+                        <label for="motif" class="col-sm-2 col-form-label">Motif *</label>
                         <div class="col-sm-10">
-                            <select class="form-select" id="motif" aria-label="Default select example">
+                            <select name="motif" class="form-select shadow <?= $error['motif_red'] ?? '' ?>" id="motif" aria-label="Default select example">
                                 <option selected disabled hidden>Choisissez un motif</option>
-                                <?php foreach(Frais::getMotif() as $motif){ ?>
-                                <option id="motif" value="<?= $motif['id_type'] ?>"><?= $motif['name_type'] ?></option>
+                                <?php foreach (Frais::getMotif() as $motif) { ?>
+                                    <option id="motif" value="<?= $motif['id_type'] ?>"><?= $motif['name_type'] ?></option>
                                 <?php } ?>
                             </select>
-                            <div class="form-text error" id="showMotifError"></div>
+                            <div class="form-text error" id="showMotifError"><?= $error['motif'] ?? '' ?></div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="montant" class="col-sm-2 col-form-label">Montant TTC</label>
+                        <label for="montant" class="col-sm-2 col-form-label">Montant TTC *</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.01" class="form-control" id="ttc">
+                            <input type="number" name="ttc" step="0.01" class="form-control shadow <?= $error['ttc_red'] ?? '' ?>" id="ttc" placeholder="0">
+                            <div class="form-text error"><?= $error['ttc'] ?? '' ?></div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="ht" class="col-sm-2 col-form-label">Montant HT<span id="showTVA"></span></label>
+                        <label for="tva" class="col-sm-2 col-form-label">TVA *<span id="showTVA"></span></label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.01" class="form-control" id="ht">
+                            <input type="number" name="tva" step="0.01" class="form-control shadow <?= $error['tva_red'] ?? '' ?>" id="tva">
+                            <div class="form-text error"><?= $error['tva'] ?? '' ?></div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="file" class="col-sm-2 col-form-label">Fichiers de justificatif</label>
+                        <label for="ht" class="col-sm-2 col-form-label">Montant HT *</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="file" multiple="multiple">
+                            <input type="number" name="ht" step="0.01" class="form-control shadow <?= $error['ht_red'] ?? '' ?>" id="ht">
+                            <div class="form-text error"><?= $error['ht'] ?? '' ?></div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="description" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control shadow" name="description" id="description" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="file" class="col-sm-2 col-form-label">Fichiers de justificatif (JPG, PNG; Max 2MB)</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="image" class="form-control shadow" id="file">
+                            <div class="form-text error"><?= $error['image'] ?? '' ?></div>
                         </div>
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <div class="text-center mb-2 ">
+                        <button type="submit" class="btn btn-warning shadow">S'identifier</button>
+                        <a href="../controllers/controller-gerer.php" type="button" class="btn btn-secondary ms-2 shadow">Arrière</a>
+                        <div class="form-text error"><?= $error['bdd'] ?? '' ?></div>
+                    </div>
                 </form>
 
             </div>
