@@ -27,7 +27,7 @@
                 //var_dump($_SESSION);
                 if (isset($_SESSION['user'])) { ?>
                     <div class="text-end">
-                        <a href="#" class="btn btn-outline-light me-2"><?= $_SESSION['user']['name'] ?></a>
+                        <a href="../controllers/controller-gerer.php" class="btn btn-outline-light me-2"><?= $_SESSION['user']['name'] ?></a>
                         <a href="../helpers/killsession.php" type="button" class="btn btn-warning">Déconnecter</a>
                     </div>
 

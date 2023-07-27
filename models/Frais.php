@@ -18,7 +18,7 @@ class Frais
     {
         try {
             $pdo = Database::createInstancePDO();
-            $sql = 'SELECT * FROM `frais` NATURAL JOIN `type_frais` NATURAL JOIN `tva` NATURAL JOIN `status` NATURAL JOIN `users`';
+            $sql = 'SELECT * FROM `frais` NATURAL JOIN `users` '; // NATURAL JOIN `type_frais` NATURAL JOIN `tva` NATURAL JOIN `status` 
             $stmt = $pdo->query($sql);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -30,7 +30,7 @@ class Frais
     {
         try {
             $pdo = Database::createInstancePDO();
-            $sql = 'SELECT * FROM `frais` NATURAL JOIN `type_frais` NATURAL JOIN `tva` NATURAL JOIN `status` NATURAL JOIN `users` WHERE `id_user` = :user';
+            $sql = 'SELECT * FROM `frais` NATURAL JOIN `users` WHERE `id_user` = :user'; //NATURAL JOIN `type_frais` NATURAL JOIN `tva` NATURAL JOIN `status`
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':user', Form::safeData($user), PDO::PARAM_STR);
             $stmt->execute();
@@ -49,11 +49,13 @@ class Frais
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
             return false;
         }
     }
 
-    public static function addFrais($date, $montant_ttc, $montant_ht, $justificatif, $id_type, $id_user ) :bool
+    public static function addFrais($date, $montant_ttc, $montant_ht, $justificatif, $id_type, $id_user): bool
     {
         try {
             $pdo = Database::createInstancePDO();
@@ -66,11 +68,19 @@ class Frais
             $stmt->bindValue(':justificatif', Form::safeData($justificatif), PDO::PARAM_STR);
             $stmt->bindValue(':id_type', Form::safeData($id_type), PDO::PARAM_STR);
             $stmt->bindValue(':id_user', Form::safeData($id_user), PDO::PARAM_STR);
-            
-            return $stmt->execute();
 
+            return $stmt->execute();
         } catch (PDOException $e) {
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
             return false;
         }
+    }
+    public static function convertImg(string $imgData)
+    {
+        $file = finfo_open();
+        $mimeType = finfo_buffer($file, $imgData, FILEINFO_MIME_TYPE);
+        $base64ImgScr = 'data:' . $mimeType . ';base64,' . $imgData;
+        return $base64ImgScr;
     }
 }
