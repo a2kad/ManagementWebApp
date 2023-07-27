@@ -30,20 +30,8 @@
                                 <td><?= $frais['lastname'] ?></td>
                                 <td><?= $frais['email'] ?></td>
                                 <td><?= $frais['tel'] ?></td>
-                                <td><button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px"></button></td>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            
-                                            
-                                            
-                                                <img src="<?= Frais::convertImg($frais['justificatif']) ?>">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
+                                </td>
                             </tr>
                         <?php  }
                     } else if ($_SESSION['user']['id_type_user'] == 1) {
@@ -54,7 +42,8 @@
                                 <td><?= $frais['lastname'] ?></td>
                                 <td><?= $frais['email'] ?></td>
                                 <td><?= $frais['tel'] ?></td>
-                                <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px"></td>
+                                <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
+                                </td>
                             </tr>
                 <?php
                         }
