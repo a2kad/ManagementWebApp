@@ -18,7 +18,7 @@ class Frais
     {
         try {
             $pdo = Database::createInstancePDO();
-            $sql = 'SELECT * FROM `frais` NATURAL JOIN `users` '; // NATURAL JOIN `type_frais` NATURAL JOIN `tva` NATURAL JOIN `status` 
+            $sql = 'SELECT * FROM `frais` NATURAL JOIN `users` NATURAL JOIN `type_frais` NATURAL JOIN `status`'; //  
             $stmt = $pdo->query($sql);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -30,7 +30,7 @@ class Frais
     {
         try {
             $pdo = Database::createInstancePDO();
-            $sql = 'SELECT * FROM `frais` NATURAL JOIN `users` WHERE `id_user` = :user'; //NATURAL JOIN `type_frais` NATURAL JOIN `tva` NATURAL JOIN `status`
+            $sql = 'SELECT * FROM `frais` NATURAL JOIN `users` NATURAL JOIN `type_frais` NATURAL JOIN `status` WHERE `id_user` = :user'; //
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':user', Form::safeData($user), PDO::PARAM_STR);
             $stmt->execute();

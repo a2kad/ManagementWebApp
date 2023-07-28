@@ -50,6 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $file_tmp = $_FILES['image']['tmp_name'];
         $file_type = $_FILES['image']['type'];
 
+        if (empty($_FILES['image'])) {
+            $error['image'] = 'Le Montant HT est obligatoire';
+            $error['image_red'] = 'is-invalid';
+        }
+
         $finfo = new finfo(FILEINFO_MIME);
 
         if(!str_contains($finfo->file($file_tmp), "image")){
@@ -58,6 +63,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         
         if ($file_size > 2097152) {
             $error['image'] = 'La taille du fichier doit être d\'exactement 2 Mo';
+        }
+        if ($_FILES['image']['error'] != 0){
+            $error['image'] = $_FILES['image']['error'];
         }
     }
     if (empty($error)) {

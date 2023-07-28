@@ -8,8 +8,10 @@
                     <th scope="col">#</th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Nom</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Téléphone</th>
+                    <th scope="col">Motif</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Montant TTC</th>
+                    <th scope="col">Statut</th>
                     <th scope="col">Justificatif</th>
                 </tr>
             </thead>
@@ -28,8 +30,10 @@
                                 <th scope="row"><?= $frais['id'] ?></th>
                                 <td><?= $frais['name'] ?></td>
                                 <td><?= $frais['lastname'] ?></td>
-                                <td><?= $frais['email'] ?></td>
-                                <td><?= $frais['tel'] ?></td>
+                                <td><?= $frais['name_type'] ?></td>
+                                <td><?= $frais['date'] ?></td>
+                                <td><?= $frais['montant_ttc'] ?>&euro;</td>
+                                <td><?= $frais['name_status'] ?></td>
                                 <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
                             </tr>
@@ -40,8 +44,10 @@
                                 <th scope="row"><?= $frais['id'] ?></th>
                                 <td><?= $frais['name'] ?></td>
                                 <td><?= $frais['lastname'] ?></td>
-                                <td><?= $frais['email'] ?></td>
-                                <td><?= $frais['tel'] ?></td>
+                                <td><?= $frais['name_type'] ?></td>
+                                <td><?= $frais['date'] ?></td>
+                                <td><?= $frais['montant_ttc'] ?>&euro;</td>
+                                <td><?= $frais['name_status'] ?></td>
                                 <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
                             </tr>
