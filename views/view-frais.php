@@ -1,7 +1,7 @@
 <?php include "components/header.php" ?>
 
-<main class="form-signin w-100 h-100">
-    <div class="container h-100 text-center">
+<main class="form-signin w-100">
+    <div class="container text-center">
         <table class="table table-striped mt-5">
             <thead>
                 <tr>
@@ -13,6 +13,7 @@
                     <th scope="col">Montant TTC</th>
                     <th scope="col">Statut</th>
                     <th scope="col">Justificatif</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +35,10 @@
                                 <td><?= $frais['date'] ?></td>
                                 <td><?= $frais['montant_ttc'] ?>&euro;</td>
                                 <td><?= $frais['name_status'] ?></td>
-                                <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
+                                <td>
+                                    <img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
+                                <td><a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-secondary btn-sm">Ouvrir</a></td>
                             </tr>
                         <?php  }
                     } else if ($_SESSION['user']['id_type_user'] == 1) {
@@ -50,6 +53,7 @@
                                 <td><?= $frais['name_status'] ?></td>
                                 <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
+                                <td></td>
                             </tr>
                 <?php
                         }

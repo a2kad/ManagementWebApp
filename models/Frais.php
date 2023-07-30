@@ -83,4 +83,49 @@ class Frais
         $base64ImgScr = 'data:' . $mimeType . ';base64,' . $imgData;
         return $base64ImgScr;
     }
+    public static function getStatus()
+    {
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = 'SELECT * FROM `status`';
+            $stmt = $pdo->query($sql);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
+            return false;
+        }
+    }
+    public static function setStatus(int $status, int $user)
+    {
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = "UPDATE `frais` SET `id_status` = :status WHERE (`id` = :user)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':status', Form::safeData($status), PDO::PARAM_INT);
+            $stmt->bindValue(':user', Form::safeData($user), PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
+            return false;
+        }
+    }
+    public static function getOneFrais(string $user) 
+    {
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = 'SELECT * FROM `frais` NATURAL JOIN `status` NATURAL JOIN `type_frais` NATURAL JOIN `users` WHERE id = :user';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':user', Form::safeData($user), PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
+            return false;
+        }
+    }
 }
