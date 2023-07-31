@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/style/style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Web App</title>
 
 </head>

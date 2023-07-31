@@ -8,9 +8,17 @@ require_once "../models/Frais.php";
 
 $error = [];
 
-if ($_SERVER["REQUEST_METHOD"] == 'GET') {
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     
-    
+    if(isset($_POST['submit'])){
+        var_dump($_POST);
+        if(Frais::setStatus($_POST['status'], $_GET['user_id'])){
+            header('Location: ../controllers/controller-frais.php');
+            exit;
+        }else{
+            $error['status'] = 'Statut non modifié';
+        }
+    }
 }
 
 require_once "../views/view-showfrais.php";

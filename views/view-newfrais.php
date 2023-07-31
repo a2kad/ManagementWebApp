@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="file" class="col-sm-2 col-form-label">Fichiers de justificatif (JPG, PNG; Max 2MB)</label>
+                        <label for="file" class="col-sm-2 col-form-label">Fichier de justificatif * <br>(JPG, PNG; Max 2MB)</label>
                         <div class="col-sm-10">
                             <input type="file" name="image" class="form-control shadow" id="file">
                             <div class="form-text error"><?= $error['image'] ?? '' ?></div>
@@ -70,7 +70,7 @@
 
 
                     <div class="text-center mb-2 ">
-                        <button type="submit" class="btn btn-warning shadow">S'identifier</button>
+                        <button type="submit" class="btn btn-warning shadow">Enregistrer</button>
                         <a href="../controllers/controller-gerer.php" type="button" class="btn btn-secondary ms-2 shadow">Arrière</a>
                         <div class="form-text error"><?= $error['bdd'] ?? '' ?></div>
                     </div>

@@ -2,7 +2,7 @@
 
 <main class="form-signin w-100">
     <div class="container text-center">
-        <table class="table table-striped mt-5">
+        <table class="table table-striped align-middle mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -53,7 +53,7 @@
                                 <td><?= $frais['name_status'] ?></td>
                                 <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
-                                <td></td>
+                                <td><a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-secondary btn-sm">Ouvrir</a></td>
                             </tr>
                 <?php
                         }
@@ -61,7 +61,7 @@
                 } ?>
             </tbody>
         </table>
-        <div class="text-end"><a href="../controllers/controller-gerer.php" type="button" class="btn btn-secondary mb-2">Arrière</a></div>
+        <div class="text-start"><a href="../controllers/controller-gerer.php" type="button" class="btn btn-secondary mb-2">Arrière</a></div>
     </div>
 
     </div>
