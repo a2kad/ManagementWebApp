@@ -54,9 +54,10 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="description" class="col-sm-2 col-form-label">Description</label>
+                        <label for="description" class="col-sm-2 col-form-label">Description *</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control shadow" name="description" id="description" rows="3"><?= $_POST['description'] ?? ''?></textarea>
+                            <textarea class="form-control shadow <?= $error['description_red'] ?? '' ?>" name="description" id="description" rows="3" value="<?= $_POST['description'] ?? ''?>"><?= $_POST['description'] ?? ''?></textarea>
+                            <div class="form-text error"><?= $error['description'] ?? '' ?></div>
                         </div>
                     </div>
 

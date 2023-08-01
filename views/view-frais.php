@@ -38,7 +38,37 @@
                                 <td>
                                     <img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
-                                <td><a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-secondary btn-sm">Ouvrir</a></td>
+                                <td>
+
+                                    <div class="btn-group" role="group">
+                                        <a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-<?= $frais['id'] ?>">
+                                            Supprimer
+                                        </button>
+                                        <!-- Start of Modal -->
+                                        <div class="modal fade" id="modal-<?= $frais['id'] ?>" tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation de suppression</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body text-start">
+                                                        Voulez-vous vraiment supprimer la note de frais no. <?= $frais['id'] ?> ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="" method="post">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                            <button type="submit" name="del" class="btn btn-danger" value="<?= $frais['id'] ?>">Supprimer</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of Modal -->
+                                    </div>
+                                </td>
                             </tr>
                         <?php  }
                     } else if ($_SESSION['user']['id_type_user'] == 1) {
@@ -53,7 +83,7 @@
                                 <td><?= $frais['name_status'] ?></td>
                                 <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
-                                <td><a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-secondary btn-sm">Ouvrir</a></td>
+                                <td><a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a></td>
                             </tr>
                 <?php
                         }

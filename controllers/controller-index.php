@@ -10,6 +10,7 @@ $message = [];
 $error = [];
 $showButtons = true;
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['email'])) {
@@ -20,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error['email'] = 'Le mail n\'est pas valide';
             $error['email_red'] = 'is-invalid';
         }
-    } 
-        $email = $_POST['email'];
-    
+    }
+    $email = $_POST['email'];
+
 
     if (isset($_POST['password'])) {
         if (empty($_POST['password'])) {
@@ -32,13 +33,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error['password'] = 'Le mot de passe n\'est pas valide (Minimum huit caractères, au moins une lettre et un chiffre)';
             $error['password_red'] = 'is-invalid';
         }
-    } 
-        $password = $_POST['password'];
-    
+    }
+
+    if (!$_POST['g-recaptcha-response']) {
+        $error['recaptcha'] = 'reCaptcha est requis';
+    } else {
+        $query = RECAPTCHA_URL . '?secret=' . RECAPTCHA_KEY . '&response=' . $_POST['g-recaptcha-response'] . '&remoteip=' . $_SERVER['REMOTE_ADDR'];
+        $data = json_decode(file_get_contents($query));
+        var_dump($_POST);
+        if ($data->success == false) {
+            $error['recaptcha'] = 'reCaptcha incorrect';
+        }
+    }
+
+    $password = $_POST['password'];
+
 
     if (empty($error)) {
         if (Users::checkLogin($email)) {
             if (Users::checkPassword($email, $password)) {
+
                 $showButtons = false;
                 $message['email'] = 'Connected';
                 $_SESSION['user'] = Users::getUser($email);

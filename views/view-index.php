@@ -18,8 +18,9 @@
                             <label for="floatingPassword">Mot de passe</label>
                             <div class="form-text error"><?= $error['password'] ?? '' ?></div>
                         </div>
-                        <div class="form-floating my-2">
+                        <div class="my-3 mx-auto" style="width: 300px;">
                             <div class="g-recaptcha" data-sitekey="6LcBfW0nAAAAAIalEVj7pyrkECIERMaw1CUhMngD"></div>
+                            <div class="form-text error"><?= $error['recaptcha'] ?? '' ?></div>
                         </div>
                         <button class="btn btn-warning w-100 py-2 my-2 shadow" type="submit">S'identifier</button>
                         <div class="form-text error"><?= $error['bdd'] ?? '' ?></div>

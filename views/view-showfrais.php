@@ -20,6 +20,7 @@
                             <p class="h6">E-mail : <?= $userFrais['email'] ?></p>
                             <hr>
                             <p class="h6">Motif : <?= ucfirst($userFrais['name_type']) ?></p>
+                            <p class="h6">Descruption : <?= $userFrais['motif'] ?></p>
                             <p class="h6">Date : <?= date_format(date_create($userFrais['date']), 'd/m/Y') ?></p>
                             <p class="h6">Montant TTC : <?= $userFrais['montant_ttc'] ?></p>
                             <p class="h6">Montant HT : <?= $userFrais['montant_ht'] ?></p>
@@ -71,6 +72,7 @@
                 <p class="h6">E-mail : <?= $userFrais['email'] ?></p>
                 <hr>
                 <p class="h6">Motif : <?= ucfirst($userFrais['name_type']) ?></p>
+                <p class="h6">Descruption : <?= $userFrais['motif'] ?></p>
                 <p class="h6">Date : <?= date_format(date_create($userFrais['date']), 'd/m/Y') ?></p>
                 <p class="h6">Montant TTC : <?= $userFrais['montant_ttc'] ?></p>
                 <p class="h6">Montant HT : <?= $userFrais['montant_ht'] ?></p>

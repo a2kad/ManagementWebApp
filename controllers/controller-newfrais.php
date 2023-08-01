@@ -27,6 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $error['ttc_red'] = 'is-invalid';
         }
     }
+    if (isset($_POST['description'])) {
+        if (empty($_POST['description'])) {
+            $error['description'] = 'Le description est obligatoire';
+            $error['description_red'] = 'is-invalid';
+        }
+    }
 
     if (isset($_POST['tva'])) {
         if (empty($_POST['tva'])) {
@@ -72,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         
         $imgFile = file_get_contents($file_tmp);
         $justificatif = base64_encode($imgFile);
-        if (Frais::addFrais($_POST['date'], $_POST['ttc'], $_POST['ht'], $justificatif, $_POST['motif'], $_SESSION['user']['id_user'])) {
+        if (Frais::addFrais($_POST['date'], $_POST['ttc'], $_POST['ht'], $_POST['description'], $justificatif, $_POST['motif'], $_SESSION['user']['id_user'])) {
             
 
             if (move_uploaded_file($file_tmp, "../assets/files/" . $file_name)) {
