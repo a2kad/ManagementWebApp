@@ -11,13 +11,17 @@ $error = [];
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     
     if(isset($_POST['submit'])){
-        var_dump($_POST);
-        if(Frais::setStatus($_POST['status'], $_GET['user_id'])){
-            header('Location: ../controllers/controller-frais.php');
+        //var_dump($_POST);
+        if($_POST['status'] == 2){
+            header("Location: ../controllers/controller-refusefrais.php?refuse=".$_POST['id_frais']);
+            exit;
+        }else{
+        if(Frais::setStatus($_POST['status'], $_GET['id_frais'])){
+            header('Location: ../controllers/controller-showfrais.php?id_frais='.$_GET['id_frais']);
             exit;
         }else{
             $error['status'] = 'Statut non modifié';
-        }
+        }}
     }
 }
 

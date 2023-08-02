@@ -41,7 +41,7 @@
                                 <td>
 
                                     <div class="btn-group" role="group">
-                                        <a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a>
+                                        <a href="../controllers/controller-showfrais.php?id_frais=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-<?= $frais['id'] ?>">
                                             Supprimer
@@ -83,7 +83,7 @@
                                 <td><?= $frais['name_status'] ?></td>
                                 <td><img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
-                                <td><a href="../controllers/controller-showfrais.php?user_id=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a></td>
+                                <td><a href="../controllers/controller-showfrais.php?id_frais=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a></td>
                             </tr>
                 <?php
                         }

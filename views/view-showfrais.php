@@ -7,7 +7,7 @@
             <div class="col-8 p-3">
                 <?php
                 //var_dump($_GET);
-                foreach (Frais::getOneFrais($_GET['user_id']) as $userFrais) {
+                foreach (Frais::getOneFrais($_GET['id_frais']) as $userFrais) {
                     //var_dump($userFrais);
                 ?>
                     <?php if (isset($_SESSION['user'])) {
@@ -23,9 +23,12 @@
                             <p class="h6">Descruption : <?= $userFrais['motif'] ?></p>
                             <p class="h6">Date : <?= date_format(date_create($userFrais['date']), 'd/m/Y') ?></p>
                             <p class="h6">Montant TTC : <?= $userFrais['montant_ttc'] ?></p>
-                            <p class="h6">Montant HT : <?= $userFrais['montant_ht'] ?></p>
+                            <p class="h6 mb-3"">Montant HT : <?= $userFrais['montant_ht'] ?></p>
                             <form action="" method="post">
-
+                                <label for="id_frais">
+                                    <p class="h6">Statut : </p>
+                                </label>
+                                <input type="hidden" id="id_frais" name="id_frais" value="<?= $userFrais['id'] ?>">
 
                                 <select name="status" class="form-select" aria-label="Default select example">
                                     <?php foreach (Frais::getStatus() as $status) { ?>
@@ -34,6 +37,8 @@
 
                                     <?php } ?>
                                 </select>
+                            <p class="h6 mt-3"><?= $userFrais['id_status'] == 2 ? 'Motif de rejet : ' . $userFrais['motif_refuse'] : '' ?></p>
+                            <p class="h6"><?= $userFrais['id_status'] == 2 ? 'Date de rejet : ' . date_format(date_create($userFrais['pay_date']), 'd/m/Y') : '' ?></p>
             </div>
             <div class="col-4 p-3">
 
@@ -77,6 +82,8 @@
                 <p class="h6">Montant TTC : <?= $userFrais['montant_ttc'] ?></p>
                 <p class="h6">Montant HT : <?= $userFrais['montant_ht'] ?></p>
                 <p class="h6">Statut : <?= $userFrais['name_status'] ?>
+                <p class="h6"><?= $userFrais['id_status'] == 2 ? 'Motif de rejet : ' . $userFrais['motif_refuse'] : '' ?></p>
+                <p class="h6"><?= $userFrais['id_status'] == 2 ? 'Date de rejet : ' . date_format(date_create($userFrais['pay_date']), 'd/m/Y') : '' ?></p>
         </div>
         <div class="col-4 p-3">
 
@@ -102,7 +109,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     <?php } else { ?>
         <div class="my-5">
@@ -114,16 +120,13 @@
 
 
 <?php if (isset($_SESSION['user'])) {
-                        if ($_SESSION['user']['id_type_user'] == 2) { ?>
-
+    if ($_SESSION['user']['id_type_user'] == 2) { ?>
         <div class="text-start">
-
-            <input name="submit" type="submit" class="btn btn-warning mb-2" value="Enregistrer">
+            <button name="submit" type="submit" class="btn btn-warning mb-2">Enregistrer</button>
             <div class="form-text error"><?= $error['status'] ?? '' ?></div>
             </form>
         </div>
         <div class="text-start"><a href="../controllers/controller-frais.php" type="button" class="btn btn-secondary mb-2">Arrière</a></div>
-
     <?php  } else if ($_SESSION['user']['id_type_user'] == 1) { ?>
         <div class="text-start"><a href="../controllers/controller-frais.php" type="button" class="btn btn-secondary mb-2">Arrière</a></div>
 <?php }

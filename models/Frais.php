@@ -113,6 +113,22 @@ class Frais
             return false;
         }
     }
+    public static function setStatusRefuse(string $motifRejet, string $dateRejet, int $id_frais)
+    {
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = "UPDATE `frais` SET `pay_date` = :dateRejet, `id_status` = 2, `motif_refuse` = :motifRejet WHERE (`id` = :id_frais)"; 
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':motifRejet', Form::safeData($motifRejet), PDO::PARAM_STR);
+            $stmt->bindValue(':dateRejet', Form::safeData($dateRejet), PDO::PARAM_STR);
+            $stmt->bindValue(':id_frais', Form::safeData($id_frais), PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
+            return false;
+        }
+    }
     public static function getOneFrais(string $user) 
     {
         try {
