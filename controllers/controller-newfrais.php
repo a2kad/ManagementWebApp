@@ -47,8 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
     }
 
-    // Download files
-
     if (isset($_FILES['image'])) {
 
         $file_name = $_FILES['image']['name'];
@@ -62,11 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
 
         $finfo = new finfo(FILEINFO_MIME);
-
         if(!str_contains($finfo->file($file_tmp), "image")){
             $error['image'] = 'Le fichier n\'est pas une image';
         }
-        
         if ($file_size > 2097152) {
             $error['image'] = 'La taille du fichier doit être d\'exactement 2 Mo';
         }
@@ -80,9 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $justificatif = base64_encode($imgFile);
         if (Frais::addFrais($_POST['date'], $_POST['ttc'], $_POST['ht'], $_POST['description'], $justificatif, $_POST['motif'], $_SESSION['user']['id_user'])) {
             
-
             if (move_uploaded_file($file_tmp, "../assets/files/" . $file_name)) {
-
                 header('Location: ../controllers/controller-verif.php');
                 exit;
             } else {

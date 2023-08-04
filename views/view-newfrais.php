@@ -68,8 +68,6 @@
                             <div class="form-text error"><?= $error['image'] ?? '' ?></div>
                         </div>
                     </div>
-
-
                     <div class="text-center mb-2 ">
                         <button type="submit" class="btn btn-warning shadow">Enregistrer</button>
                         <a href="../controllers/controller-gerer.php" type="button" class="btn btn-secondary ms-2 shadow">Arrière</a>

@@ -44,7 +44,6 @@
                             <p class="h6">Justificatif :</p>
                             <img src="<?= Frais::convertImg($userFrais['justificatif']) ?>" class="img-fluid bg-white border p-2 mb-3">
                         <?php } ?>
-
                     <?php  } else if ($_SESSION['user']['id_type_user'] == 1) { ?>
                         <div class="my-5">
                             <p class="h3"><img src="../assets/image/block.png" alt="No haking" width="100px">Bloqué</p>

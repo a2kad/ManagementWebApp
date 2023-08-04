@@ -19,13 +19,7 @@
             <tbody>
                 <?php if (isset($_SESSION['user'])) {
                     if ($_SESSION['user']['id_type_user'] == 2) {
-
                         foreach (Frais::getAllFrais() as $frais) {
-                            //var_dump($frais);
-                            /* $imgData = $frais['justificatif'];
-                            $file = finfo_open();
-                            $mimeType = finfo_buffer($file,$imgData,FILEINFO_MIME_TYPE);
-                            $base64ImgScr = 'data:'. $mimeType . ';base64,' . $imgData; */
                 ?>
                             <tr>
                                 <th scope="row"><?= $frais['id'] ?></th>
@@ -39,7 +33,6 @@
                                     <img src="<?= Frais::convertImg($frais['justificatif']) ?>" class="img-thumbnail" width="100px">
                                 </td>
                                 <td>
-
                                     <div class="btn-group" role="group">
                                         <a href="../controllers/controller-showfrais.php?id_frais=<?= $frais['id'] ?>" type="button" class="btn btn-warning btn-sm">Ouvrir</a>
                                         <!-- Button trigger modal -->
